@@ -4,21 +4,52 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-
     [SerializeField] private VehicleDirectionDefiner _directionDefiner;
     [SerializeField] private VehicleMovement _vehicleMovement;
+    [SerializeField] private VehicleRadar _vehicleRadar;    
 
-    
-
-    // Start is called before the first frame update
     void Start()
     {
+        _vehicleRadar.NotifyMeOn(VehicleDirections.Left);
+        _vehicleRadar.OnObstacleDetected += HandleTargetDetected;
+
         _vehicleMovement.MoveLeft();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDestroy()
     {
-        
+        _vehicleRadar.OnObstacleDetected -= HandleTargetDetected;
+    }
+
+    private void HandleTargetDetected(Transform target, VehicleDirections directionDetected){
+
+        DecideNewDirection();
+    }
+
+    private void DecideNewDirection(){
+        List<VehicleDirections> freeDirections = _vehicleRadar.GetFreeDirections();
+
+        VehicleDirections newDirection = _directionDefiner.GetNewDirectionFrom(freeDirections);
+
+        _vehicleRadar.NotifyMeOn(newDirection);
+
+        switch (newDirection)
+        {
+            case VehicleDirections.Forward:
+                _vehicleMovement.MoveForward();
+                break;
+            case VehicleDirections.Backward:
+                _vehicleMovement.MoveBackward();
+                break;
+            case VehicleDirections.Left:
+                _vehicleMovement.MoveLeft();
+                break;
+            case VehicleDirections.Right:
+                _vehicleMovement.MoveRight();
+                break;
+            case VehicleDirections.Stop:
+                // Do nothing
+                break;
+        }
     }
 }

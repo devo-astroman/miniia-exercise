@@ -11,4 +11,11 @@ public class VehicleDirectionDefiner : MonoBehaviour
         currentDirection = VehicleDirectionUtility.GetRandomDirection(currentDirection);
         return currentDirection;
     }
+
+    public VehicleDirections GetNewDirectionFrom(List<VehicleDirections> directions)
+    {
+        int randomIndex = Random.Range(0, directions.Count);
+        VehicleDirections newDirection = directions[randomIndex];
+        return newDirection;
+    }
 }
