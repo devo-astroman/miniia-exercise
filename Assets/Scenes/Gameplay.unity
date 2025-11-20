@@ -165,8 +165,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80973987}
+  - component: {fileID: 80973988}
   m_Layer: 0
-  m_Name: Detectors
+  m_Name: Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,6 +192,26 @@ Transform:
   - {fileID: 847829888}
   m_Father: {fileID: 1502725625}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80973988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80973986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac1c31cca2174d4a993d9ee2dd28286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rayDetectorForward: {fileID: 1895104226}
+  _rayDetectorBackward: {fileID: 634325532}
+  _rayDetectorLeft: {fileID: 563730075}
+  _rayDetectorRight: {fileID: 847829889}
+  _forwardBlocked: 0
+  _backwardBlocked: 0
+  _leftBlocked: 0
+  _rightBlocked: 0
 --- !u!1 &115883485
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +566,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPoint: {fileID: 563730074}
   directionPoint: {fileID: 659312980}
-  target: {fileID: 659312980}
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
@@ -708,7 +728,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPoint: {fileID: 634325531}
   directionPoint: {fileID: 1026734349}
-  target: {fileID: 0}
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
@@ -891,7 +910,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPoint: {fileID: 847829888}
   directionPoint: {fileID: 129168850}
-  target: {fileID: 0}
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
@@ -973,7 +991,7 @@ Transform:
   m_GameObject: {fileID: 911473997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: -15.1, y: 0.5, z: 5.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -994,6 +1012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionDefiner: {fileID: 906122960}
   _vehicleMovement: {fileID: 2093173591}
+  _vehicleRadar: {fileID: 80973988}
+  _changeDirectionOnTimeInterval: 1
 --- !u!54 &911474000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1019,7 +1039,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &963194225
 GameObject:
@@ -1510,14 +1530,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originPoint: {fileID: 1895104225}
   directionPoint: {fileID: 382887494}
-  target: {fileID: 382887494}
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
     m_Bits: 8
   OnTargetDetectedUnity:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Vehicle, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTargetLostUnity:
     m_PersistentCalls:
       m_Calls: []
@@ -1566,7 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rbody: {fileID: 911474000}
-  _speed: 1
+  _speed: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

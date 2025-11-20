@@ -54,7 +54,6 @@ public class VehicleMovement : MonoBehaviour
 
     public void MoveLeft()
     {
-        print("Move Left");
         _goForward = false;
         _goBackward = false;
         _goLeft = true;

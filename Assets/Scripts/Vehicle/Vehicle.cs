@@ -6,7 +6,11 @@ public class Vehicle : MonoBehaviour
 {
     [SerializeField] private VehicleDirectionDefiner _directionDefiner;
     [SerializeField] private VehicleMovement _vehicleMovement;
-    [SerializeField] private VehicleRadar _vehicleRadar;    
+    [SerializeField] private VehicleRadar _vehicleRadar;
+
+    [SerializeField] private bool _changeDirectionOnTimeInterval = false;
+
+
 
     void Start()
     {
@@ -14,6 +18,12 @@ public class Vehicle : MonoBehaviour
         _vehicleRadar.OnObstacleDetected += HandleTargetDetected;
 
         _vehicleMovement.MoveLeft();
+
+        if(_changeDirectionOnTimeInterval){
+            InvokeRepeating("DecideNewDirection", 2f, 2f);
+        }
+
+
     }
 
     void OnDestroy()
