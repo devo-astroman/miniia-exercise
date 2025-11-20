@@ -1,0 +1,85 @@
+## Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+
+## Visual Studio / Rider / VSCode
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userprefs
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.tmproj
+
+## Build results
+*.apk
+*.aab
+*.xcodeproj
+*.xcworkspace
+*.xcuserstate
+*.ipa
+*.app
+*.exe
+*.dll
+*.appx
+*.appxbundle
+*.unitypackage
+
+## Crash and profiling data
+sysinfo.txt
+*.stacktrace
+*.profiler
+*.trace
+*.dmp
+
+## Platform-specific
+.DS_Store
+Thumbs.db
+*.psd
+*.tmp
+*.bak
+*.swp
+*.lock
+*.orig
+*.old
+*.blend1
+
+## Cache / Auto-generated
+/[Aa]ssets/Plugins/Editor/JetBrains*
+/[Aa]ssets/StreamingAssets/aa/*
+/[Aa]ssets/AddressableAssetsData/*/*.bin*
+/[Aa]ssets/AssetStoreTools*
+/[Aa]ssets/AssetBundles/*
+/[Aa]ssets/GeneratedLocalReports/
+*.mode1v3
+*.mode2v3
+
+## Collaborate / Cloud / LFS
+[Aa]ssets/UnityCollaborate/*
+[Aa]ssets/StreamingAssets/CloudBuild/*
+[Aa]ssets/CloudBuildManifest.json
+[Aa]ssets/AssetStoreTools*
+*.unitypackage
+*.assetbundle
+*.bundle
+
+## Unity cache directories
+/[Uu]serSettings/
+Logs/
+BuildLogs/
+[Aa]ssets/AssetImporters/
+[Bb]ackup*/
+
+## Temporary / Experimental
+/[Pp]ackages/manifest-temp.json
+/[Pp]ackages/packages-lock.json
