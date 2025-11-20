@@ -8,16 +8,10 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField] private Rigidbody _rbody;
     [SerializeField] private float _speed = 10f;
 
-    private bool _goForward = true;
+    private bool _goForward = false;
     private bool _goBackward = false;
     private bool _goLeft = false;
     private bool _goRight = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -60,6 +54,7 @@ public class VehicleMovement : MonoBehaviour
 
     public void MoveLeft()
     {
+        print("Move Left");
         _goForward = false;
         _goBackward = false;
         _goLeft = true;

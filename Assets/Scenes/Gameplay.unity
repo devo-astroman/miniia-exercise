@@ -549,7 +549,7 @@ MonoBehaviour:
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   OnTargetDetectedUnity:
     m_PersistentCalls:
       m_Calls: []
@@ -712,7 +712,7 @@ MonoBehaviour:
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   OnTargetDetectedUnity:
     m_PersistentCalls:
       m_Calls: []
@@ -895,13 +895,57 @@ MonoBehaviour:
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
   OnTargetDetectedUnity:
     m_PersistentCalls:
       m_Calls: []
   OnTargetLostUnity:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &906122958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 906122959}
+  - component: {fileID: 906122960}
+  m_Layer: 0
+  m_Name: DirectionDefiner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &906122959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906122958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1502725625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906122960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906122958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421cc8284242ec448afc0b523153fe2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911473997
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1573eaeaf86e3444bcc9e0d92990ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _directionDefiner: {fileID: 906122960}
+  _vehicleMovement: {fileID: 2093173591}
 --- !u!54 &911474000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -973,7 +1019,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!1 &963194225
 GameObject:
@@ -1236,6 +1282,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 80973987}
+  - {fileID: 906122959}
+  - {fileID: 2093173590}
   m_Father: {fileID: 911473998}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1502725627
@@ -1466,13 +1514,59 @@ MonoBehaviour:
   maxDistance: 2
   detectionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   OnTargetDetectedUnity:
     m_PersistentCalls:
       m_Calls: []
   OnTargetLostUnity:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2093173589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093173590}
+  - component: {fileID: 2093173591}
+  m_Layer: 0
+  m_Name: VehicleMovement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093173590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093173589}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1502725625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2093173591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093173589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da3fccd4250f3794d82d82c8707abc96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rbody: {fileID: 911474000}
+  _speed: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
