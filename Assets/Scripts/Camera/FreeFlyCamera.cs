@@ -12,6 +12,8 @@ public class FreeFlyCamera : MonoBehaviour
     private float yaw;
     private float pitch;
 
+    public bool lockOnClick = true;
+
     void Start()
     {
         // Initialize rotation from current transform
@@ -19,8 +21,6 @@ public class FreeFlyCamera : MonoBehaviour
         yaw = angles.y;
         pitch = angles.x;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void Update()
@@ -28,11 +28,19 @@ public class FreeFlyCamera : MonoBehaviour
         HandleMouseLook();
         HandleMovement();
 
-        // Escape to unlock cursor
+        if (lockOnClick && Cursor.lockState != CursorLockMode.Locked)
+        {
+            // Any real user gesture works:
+            if (Input.GetMouseButtonDown(0) || Input.anyKeyDown)
+            {
+                LockCursor();
+            }
+        }
+
+        // Optional: press Esc to unlock
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            UnlockCursor();
         }
     }
 
@@ -66,5 +74,25 @@ public class FreeFlyCamera : MonoBehaviour
         if (Input.GetKey(KeyCode.Q)) move += Vector3.down;
 
         transform.position += move * speed * Time.deltaTime;
+    }
+
+    public void LookAt(Vector3 targetPosition)
+    {
+        //can you complete this function to make the camera look at a target position?
+        Vector3 direction = targetPosition - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = targetRotation;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

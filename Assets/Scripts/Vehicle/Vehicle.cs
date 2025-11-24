@@ -10,7 +10,14 @@ public class Vehicle : MonoBehaviour
 
     [SerializeField] private bool _changeDirectionOnTimeInterval = false;
 
+    private SetTimeoutUtility timeoutDelayToDecideNewDirection;
+    private SetIntervalUtility timeIntervalToDecideNewDirection;
 
+    void Awake()
+    {
+        timeoutDelayToDecideNewDirection = new SetTimeoutUtility(this);
+        timeIntervalToDecideNewDirection = new SetIntervalUtility(this);
+    }
 
     void Start()
     {
@@ -19,11 +26,15 @@ public class Vehicle : MonoBehaviour
 
         _vehicleMovement.MoveLeft();
 
-        if(_changeDirectionOnTimeInterval){
-            InvokeRepeating("DecideNewDirection", 2f, 2f);
+
+        if (_changeDirectionOnTimeInterval)
+        {            
+            timeoutDelayToDecideNewDirection.SetTimeout(() => {
+                timeIntervalToDecideNewDirection.SetInterval(() => {
+                    DecideNewDirection();
+                }, 2);            
+            }, 8);
         }
-
-
     }
 
     void OnDestroy()

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody _rbody;
-    [SerializeField] private float _speed = 10f;
+    private float _speed = 20f;
 
     private bool _goForward = false;
     private bool _goBackward = false;
@@ -14,24 +12,25 @@ public class VehicleMovement : MonoBehaviour
     private bool _goRight = false;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+
         if (_goForward)
         {
             _rbody.AddForce(Vector3.forward * _speed, ForceMode.Acceleration);
         }
         else if (_goBackward)
         {
-            _rbody.AddForce(Vector3.forward * _speed *-1, ForceMode.Acceleration);
+            _rbody.AddForce(Vector3.back * _speed, ForceMode.Acceleration);
         }
         else if (_goLeft)
         {
-            _rbody.AddForce(Vector3.right * _speed *-1, ForceMode.Acceleration);
+            _rbody.AddForce(Vector3.left * _speed, ForceMode.Acceleration);
         }
         else if (_goRight)
         {
             _rbody.AddForce(Vector3.right * _speed, ForceMode.Acceleration);
-        }       
+        }
 
     }
 
